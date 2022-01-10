@@ -12,7 +12,7 @@ pub struct ScoreUI;
 pub struct TimeUI;
 pub struct ScoreBoard;
 
-pub fn setup_layout(
+pub fn setup(
     mut commands: Commands,
     assets: Res<AssetServer>,
     mut materials: ResMut<Assets<ColorMaterial>>,

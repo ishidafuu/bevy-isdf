@@ -7,14 +7,7 @@ mod camera;
 pub fn run() {
     let mut app = App::build();
 
-    app.insert_resource(WindowDescriptor {
-        title: "My Bevy App".to_string(),
-        width: 640.,
-        height: 480.,
-        #[cfg(target_arch = "wasm32")]
-        canvas: Some("canvas".to_string()),
-        ..Default::default()
-    })
+    app.insert_resource(setup_window())
     .add_plugins(DefaultPlugins)
     .add_plugin(camera::camera_plugin::SetupCameraPlugin)
     .add_plugin(state::state_plugin::SwitchStatePlugin)
@@ -26,8 +19,13 @@ pub fn run() {
     app.run();
 }
 
-// fn camera_setup(mut commands: Commands) {
-//     commands.insert_resource(ClearColor(Color::rgb(1., 1., 1.)));
-//     commands.spawn_bundle(OrthographicCameraBundle::new_2d());
-//     commands.spawn_bundle(UiCameraBundle::default());
-// }
+fn setup_window() -> WindowDescriptor {
+    WindowDescriptor {
+        title: "My Bevy App".to_string(),
+        width: 640.,
+        height: 480.,
+        #[cfg(target_arch = "wasm32")]
+        canvas: Some("canvas".to_string()),
+        ..Default::default()
+    }
+}
