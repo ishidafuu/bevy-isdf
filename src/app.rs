@@ -2,6 +2,7 @@ use bevy::{prelude::*, render::render_graph::Stages};
 
 mod layout;
 mod state;
+mod camera;
 
 pub fn run() {
     let mut app = App::build();
@@ -15,7 +16,7 @@ pub fn run() {
         ..Default::default()
     })
     .add_plugins(DefaultPlugins)
-    .add_startup_system(camera_setup.system())
+    .add_plugin(camera::camera_plugin::SetupCameraPlugin)
     .add_plugin(state::state_plugin::SwitchStatePlugin)
     .add_plugin(layout::layout_plugin::AppLayoutPlugin);
 
@@ -25,8 +26,8 @@ pub fn run() {
     app.run();
 }
 
-fn camera_setup(mut commands: Commands) {
-    commands.insert_resource(ClearColor(Color::rgb(1., 1., 1.)));
-    commands.spawn_bundle(OrthographicCameraBundle::new_2d());
-    commands.spawn_bundle(UiCameraBundle::default());
-}
+// fn camera_setup(mut commands: Commands) {
+//     commands.insert_resource(ClearColor(Color::rgb(1., 1., 1.)));
+//     commands.spawn_bundle(OrthographicCameraBundle::new_2d());
+//     commands.spawn_bundle(UiCameraBundle::default());
+// }
