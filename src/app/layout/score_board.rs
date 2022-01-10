@@ -1,15 +1,16 @@
 use bevy::{
     math::{Rect, Size},
-    prelude::{
-        AssetServer, Assets, BuildChildren, Color, ColorMaterial, Commands, Handle, ImageBundle,
-        Res, ResMut, TextBundle,
-    },
+    prelude::{*},
     text::{Font, Text, TextSection, TextStyle},
     ui::{Style, Val},
 };
+use bevy::ui::UiColor;
 
+#[derive(Component)]
 pub struct ScoreUI;
+#[derive(Component)]
 pub struct TimeUI;
+#[derive(Component)]
 pub struct ScoreBoard;
 
 pub fn setup(
@@ -77,10 +78,7 @@ pub fn setup(
             },
             ..Default::default()
         },
-        material: materials.add(ColorMaterial {
-            color: Color::rgba(0., 0., 0., 0.9),
-            ..Default::default()
-        }),
+        color: UiColor(Color::rgba(0., 0., 0., 0.9)),
         ..Default::default()
     };
 

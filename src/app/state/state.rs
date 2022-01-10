@@ -1,8 +1,11 @@
-use bevy::{prelude::*, text::Text2dSize, ui::widget::Image};
+use bevy::{prelude::*, text::Text2dSize};
 use std::time::Duration;
 
+#[derive(Component)]
 pub struct SceneBoard;
+#[derive(Component)]
 pub struct SceneHeader;
+#[derive(Component)]
 pub struct SceneDescription;
 
 #[derive(Debug, Clone, Eq, PartialEq, Hash)]
@@ -28,7 +31,7 @@ pub fn setup(
     commands.insert_resource(Timer::from_seconds(10., true));
     commands
         .spawn_bundle(ImageBundle {
-            material: color_materials.add(ColorMaterial::color(Color::RED)),
+            color: UiColor(Color::RED),
             style: Style {
                 display: Display::Flex,
                 justify_content: JustifyContent::Center,
@@ -83,15 +86,13 @@ pub fn on_setup_entry(
     eprintln!("Setup sequnce start!!");
     timer.reset();
 
-    match header_q.single_mut() {
-        Err(_) => eprintln!("No header text element in the board."),
-        Ok((entity, mut text)) => {
-            text.sections = vec![TextSection {
-                value: "Setup Sequence".to_string(),
-                style: ts.clone(),
-            }]
-        }
-    }
+    let (_, mut text) = header_q
+        .get_single_mut()
+        .expect("No header text element in the board.");
+    text.sections = vec![TextSection {
+        value: "Setup Sequence".to_string(),
+        style: ts.clone(),
+    }];
 }
 
 pub fn on_setup_process(
@@ -101,16 +102,15 @@ pub fn on_setup_process(
     mut timer: ResMut<Timer>,
     ts: Res<TextStyle>,
 ) {
-    match description_q.single_mut() {
-        Err(_) => eprintln!("No header text element in the board."),
-        Ok((entity, mut text)) => {
-            let time_text = format!("Time:{:.2}", timer.elapsed_secs());
-            text.sections = vec![TextSection {
-                value: time_text,
-                style: ts.clone(),
-            }]
-        }
-    }
+    let (_, mut text) = description_q
+        .get_single_mut()
+        .expect("No header text element in the board.");
+    let time_text = format!("Time:{:.2}", timer.elapsed_secs());
+    text.sections = vec![TextSection {
+        value: time_text,
+        style: ts.clone(),
+    }];
+
     timer.tick(time.delta());
     if timer.elapsed().as_secs() >= 5 {
         states.set(AppStates::A);
@@ -128,15 +128,13 @@ pub fn on_state_a_entered(
     eprintln!("A sequnce start!!");
     timer.reset();
 
-    match header_q.single_mut() {
-        Err(_) => eprintln!("No header text element in the board."),
-        Ok((entity, mut text)) => {
-            text.sections = vec![TextSection {
-                value: "State A".to_string(),
-                style: ts.clone(),
-            }]
-        }
-    }
+    let (_, mut text) = header_q
+        .get_single_mut()
+        .expect("No header text element in the board.");
+    text.sections = vec![TextSection {
+        value: "State A".to_string(),
+        style: ts.clone(),
+    }];
 }
 
 pub fn on_state_a_process(
@@ -146,16 +144,15 @@ pub fn on_state_a_process(
     mut timer: ResMut<Timer>,
     ts: Res<TextStyle>,
 ) {
-    match description_q.single_mut() {
-        Err(_) => eprintln!("No SceneDescription text element in the board."),
-        Ok((entity, mut text)) => {
-            let time_text = format!("Time:{:.2}", timer.elapsed_secs());
-            text.sections = vec![TextSection {
-                value: time_text,
-                style: ts.clone(),
-            }]
-        }
-    }
+    let (_, mut text) = description_q
+        .get_single_mut()
+        .expect("No SceneDescription text element in the board.");
+    let time_text = format!("Time:{:.2}", timer.elapsed_secs());
+    text.sections = vec![TextSection {
+        value: time_text,
+        style: ts.clone(),
+    }];
+
     timer.tick(time.delta());
     if timer.elapsed().as_secs() >= 5 {
         states.set(AppStates::B);
@@ -172,16 +169,13 @@ pub fn on_state_b_entered(
 ) {
     eprintln!("B sequnce start!!");
     timer.reset();
-
-    match header_q.single_mut() {
-        Err(_) => eprintln!("No header text element in the board."),
-        Ok((entity, mut text)) => {
-            text.sections = vec![TextSection {
-                value: "State B".to_string(),
-                style: ts.clone(),
-            }]
-        }
-    }
+    let (_, mut text) = header_q
+        .get_single_mut()
+        .expect("No header text element in the board.");
+    text.sections = vec![TextSection {
+        value: "State B".to_string(),
+        style: ts.clone(),
+    }];
 }
 
 pub fn on_state_b_process(
@@ -191,16 +185,15 @@ pub fn on_state_b_process(
     mut timer: ResMut<Timer>,
     ts: Res<TextStyle>,
 ) {
-    match description_q.single_mut() {
-        Err(_) => eprintln!("No SceneDescription text element in the board."),
-        Ok((entity, mut text)) => {
-            let time_text = format!("Time:{:.2}", timer.elapsed_secs());
-            text.sections = vec![TextSection {
-                value: time_text,
-                style: ts.clone(),
-            }]
-        }
-    }
+    let (_, mut text) = description_q
+        .get_single_mut()
+        .expect("No SceneDescription text element in the board.");
+    let time_text = format!("Time:{:.2}", timer.elapsed_secs());
+    text.sections = vec![TextSection {
+        value: time_text,
+        style: ts.clone(),
+    }];
+
     timer.tick(time.delta());
     if timer.elapsed().as_secs() >= 5 {
         states.set(AppStates::A);

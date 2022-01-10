@@ -1,11 +1,11 @@
-use bevy::{prelude::*, render::render_graph::Stages};
+use bevy::{prelude::*};
 
 mod layout;
 mod state;
 mod camera;
 
 pub fn run() {
-    let mut app = App::build();
+    let mut app = App::new();
 
     app.insert_resource(setup_window())
     .add_plugins(DefaultPlugins)
