@@ -1,10 +1,9 @@
+use bevy::ui::UiColor;
 use bevy::{
-    math::{Rect, Size},
-    prelude::{*},
+    prelude::*,
     text::{Font, Text, TextSection, TextStyle},
     ui::{Style, Val},
 };
-use bevy::ui::UiColor;
 
 #[derive(Component)]
 pub struct ScoreUI;
@@ -35,7 +34,7 @@ pub fn setup(
             ..Default::default()
         },
         style: Style {
-            margin: Rect::<Val> {
+            margin: UiRect::<Val> {
                 left: Val::Px(0.),
                 ..Default::default()
             },
@@ -53,7 +52,7 @@ pub fn setup(
             ..Default::default()
         },
         style: Style {
-            margin: Rect::<Val> {
+            margin: UiRect::<Val> {
                 right: Val::Px(0.),
                 ..Default::default()
             },
@@ -68,7 +67,7 @@ pub fn setup(
             align_items: bevy::ui::AlignItems::Center,
             justify_content: bevy::ui::JustifyContent::SpaceBetween,
             position_type: bevy::ui::PositionType::Absolute,
-            position: Rect::<Val> {
+            position: UiRect::<Val> {
                 top: Val::Percent(0.),
                 ..Default::default()
             },

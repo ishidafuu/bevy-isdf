@@ -39,7 +39,7 @@ pub fn setup(
                 align_items: AlignItems::Center,
                 flex_wrap: FlexWrap::Wrap,
                 position_type: PositionType::Absolute,
-                position: Rect::<Val> {
+                position: UiRect::<Val> {
                     top: Val::Percent(15.),
                     bottom: Val::Percent(15.),
                     left: Val::Px(0.),

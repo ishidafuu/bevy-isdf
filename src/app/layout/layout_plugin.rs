@@ -6,6 +6,6 @@ pub struct AppLayoutPlugin;
 
 impl Plugin for AppLayoutPlugin {
     fn build(&self, app: &mut App) {
-        app.add_startup_system(score_board::setup.system());
+        app.add_startup_system(score_board::setup);
     }
 }

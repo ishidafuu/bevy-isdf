@@ -3,6 +3,7 @@ use bevy::{prelude::*};
 mod layout;
 mod state;
 mod camera;
+mod sprite_manager;
 
 pub fn run() {
     let mut app = App::new();
@@ -11,7 +12,8 @@ pub fn run() {
     .add_plugins(DefaultPlugins)
     .add_plugin(camera::camera_plugin::SetupCameraPlugin)
     .add_plugin(state::state_plugin::SwitchStatePlugin)
-    .add_plugin(layout::layout_plugin::AppLayoutPlugin);
+    .add_plugin(layout::layout_plugin::AppLayoutPlugin)
+    .add_plugin(sprite_manager::sprite_manager_plugin::SpriteManagerPlugin);
 
     // // when building for Web, use WebGL2 rendering
     // #[cfg(target_arch = "wasm32")]
