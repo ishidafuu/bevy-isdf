@@ -1,8 +1,7 @@
-use bevy::ui::UiColor;
 use bevy::{
     prelude::*,
     text::{Font, Text, TextSection, TextStyle},
-    ui::{Style, Val},
+    ui::{Style, Val, UiColor},
 };
 
 #[derive(Component)]

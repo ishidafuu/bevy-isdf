@@ -8,7 +8,7 @@ pub struct SpriteManager {
     pub unit_atlas_image: HashMap<String, Handle<Image>>,
 }
 
-pub fn setup(
+pub fn setup_sprite_manager(
     mut commands: Commands,
     asset_server: Res<AssetServer>,
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,

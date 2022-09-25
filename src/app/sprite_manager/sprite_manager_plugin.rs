@@ -1,4 +1,5 @@
 use bevy::prelude::{App, Plugin};
+use crate::app::sprite_manager::sprite_manager;
 
 use super::sprite_manager::*;
 
