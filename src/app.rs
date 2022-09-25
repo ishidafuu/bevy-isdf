@@ -1,19 +1,19 @@
-use bevy::{prelude::*};
+use bevy::prelude::*;
 
-mod layout;
-mod state;
 mod camera;
+mod layout;
 mod sprite_manager;
+mod state;
 
 pub fn run() {
     let mut app = App::new();
 
     app.insert_resource(setup_window())
-    .add_plugins(DefaultPlugins)
-    .add_plugin(camera::camera_plugin::SetupCameraPlugin)
-    .add_plugin(state::state_plugin::SwitchStatePlugin)
-    .add_plugin(layout::layout_plugin::AppLayoutPlugin)
-    .add_plugin(sprite_manager::sprite_manager_plugin::SpriteManagerPlugin);
+        .add_plugins(DefaultPlugins)
+        .add_plugin(camera::camera_plugin::SetupCameraPlugin)
+        .add_plugin(state::state_plugin::SwitchStatePlugin)
+        .add_plugin(layout::layout_plugin::AppLayoutPlugin)
+        .add_plugin(sprite_manager::sprite_manager_plugin::SpriteManagerPlugin);
 
     // // when building for Web, use WebGL2 rendering
     // #[cfg(target_arch = "wasm32")]
@@ -21,6 +21,7 @@ pub fn run() {
     app.run();
 }
 
+// ウインドウのセットアップ
 fn setup_window() -> WindowDescriptor {
     WindowDescriptor {
         title: "My Bevy App".to_string(),

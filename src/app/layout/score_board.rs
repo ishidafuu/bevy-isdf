@@ -15,7 +15,6 @@ pub struct ScoreBoard;
 pub fn setup(
     mut commands: Commands,
     assets: Res<AssetServer>,
-    mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
     let font_handle: Handle<Font> = assets.load("fonts/Picory.ttf");
     let text_style = TextStyle {

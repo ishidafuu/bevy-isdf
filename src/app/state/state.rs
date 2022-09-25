@@ -1,5 +1,4 @@
-use bevy::{prelude::*, text::Text2dSize};
-use std::time::Duration;
+use bevy::{prelude::*};
 
 #[derive(Component)]
 pub struct SceneBoard;
@@ -17,7 +16,6 @@ pub enum AppStates {
 
 pub fn setup(
     mut commands: Commands,
-    mut color_materials: ResMut<Assets<ColorMaterial>>,
     loader: Res<AssetServer>,
 ) {
     let font = loader.load("fonts/Picory.ttf");
@@ -83,7 +81,7 @@ pub fn on_setup_entry(
     mut timer: ResMut<Timer>,
     ts: Res<TextStyle>,
 ) {
-    eprintln!("Setup sequnce start!!");
+    eprintln!("Setup sequence start!!");
     timer.reset();
 
     let (_, mut text) = header_q
@@ -98,7 +96,7 @@ pub fn on_setup_entry(
 pub fn on_setup_process(
     mut description_q: Query<(Entity, &mut Text), With<SceneDescription>>,
     mut states: ResMut<State<AppStates>>,
-    mut time: ResMut<Time>,
+    time: ResMut<Time>,
     mut timer: ResMut<Timer>,
     ts: Res<TextStyle>,
 ) {
@@ -113,7 +111,7 @@ pub fn on_setup_process(
 
     timer.tick(time.delta());
     if timer.elapsed().as_secs() >= 5 {
-        states.set(AppStates::A);
+        states.set(AppStates::A).expect("TODO: panic message");
     }
 }
 pub fn on_setup_exit() {
@@ -140,7 +138,7 @@ pub fn on_state_a_entered(
 pub fn on_state_a_process(
     mut description_q: Query<(Entity, &mut Text), With<SceneDescription>>,
     mut states: ResMut<State<AppStates>>,
-    mut time: ResMut<Time>,
+    time: ResMut<Time>,
     mut timer: ResMut<Timer>,
     ts: Res<TextStyle>,
 ) {
@@ -155,7 +153,7 @@ pub fn on_state_a_process(
 
     timer.tick(time.delta());
     if timer.elapsed().as_secs() >= 5 {
-        states.set(AppStates::B);
+        states.set(AppStates::B).expect("TODO: panic message");
     }
 }
 pub fn on_state_a_exit() {
@@ -181,7 +179,7 @@ pub fn on_state_b_entered(
 pub fn on_state_b_process(
     mut description_q: Query<(Entity, &mut Text), With<SceneDescription>>,
     mut states: ResMut<State<AppStates>>,
-    mut time: ResMut<Time>,
+    time: ResMut<Time>,
     mut timer: ResMut<Timer>,
     ts: Res<TextStyle>,
 ) {
@@ -196,7 +194,7 @@ pub fn on_state_b_process(
 
     timer.tick(time.delta());
     if timer.elapsed().as_secs() >= 5 {
-        states.set(AppStates::A);
+        states.set(AppStates::A).expect("TODO: panic message");
     }
 }
 pub fn on_state_b_exit() {

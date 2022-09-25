@@ -1,4 +1,4 @@
-use bevy::prelude::{App, IntoSystem, Plugin, State, SystemSet};
+use bevy::prelude::{App, Plugin};
 
 use super::sprite_manager::*;
 
