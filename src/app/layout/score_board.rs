@@ -1,7 +1,7 @@
 use bevy::{
     prelude::*,
     text::{Font, Text, TextSection, TextStyle},
-    ui::{Style, Val, UiColor},
+    ui::{Style, UiColor, Val},
 };
 
 #[derive(Component)]
@@ -11,10 +11,7 @@ pub struct TimeUI;
 #[derive(Component)]
 pub struct ScoreBoard;
 
-pub fn setup(
-    mut commands: Commands,
-    assets: Res<AssetServer>,
-) {
+pub fn setup(mut commands: Commands, assets: Res<AssetServer>) {
     let font_handle: Handle<Font> = assets.load("fonts/Picory.ttf");
     let text_style = TextStyle {
         color: Color::WHITE,
@@ -61,10 +58,10 @@ pub fn setup(
     //ヘッダー背景のスタイル
     let container = ImageBundle {
         style: Style {
-            display: bevy::ui::Display::Flex,
-            align_items: bevy::ui::AlignItems::Center,
-            justify_content: bevy::ui::JustifyContent::SpaceBetween,
-            position_type: bevy::ui::PositionType::Absolute,
+            display: Display::Flex,
+            align_items: AlignItems::Center,
+            justify_content: JustifyContent::SpaceBetween,
+            position_type: PositionType::Absolute,
             position: UiRect::<Val> {
                 top: Val::Percent(0.),
                 ..Default::default()
