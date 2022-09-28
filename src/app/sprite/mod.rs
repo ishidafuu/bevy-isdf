@@ -1,2 +1,1 @@
-pub mod sprite_plugin;
-mod sprite;
+pub mod sprite;

@@ -1,10 +1,10 @@
 use bevy::prelude::*;
 
 mod camera;
+mod input;
 mod layout;
 mod sprite;
 mod state;
-mod input;
 
 pub fn run() {
     let mut app = App::new();
@@ -13,9 +13,9 @@ pub fn run() {
         .add_plugins(DefaultPlugins)
         .add_plugin(camera::camera::CameraPlugin)
         // .add_plugin(state::state_plugin::SwitchStatePlugin)
-        .add_plugin(layout::layout_plugin::AppLayoutPlugin)
-        .add_plugin(sprite::sprite_plugin::SpritePlugin)
-        .add_plugin(input::input_plugin::InputPlugin);
+        .add_plugin(layout::layout::AppLayoutPlugin)
+        .add_plugin(sprite::sprite::SpritePlugin)
+        .add_plugin(input::input::InputPlugin);
 
     // // when building for Web, use WebGL2 rendering
     // #[cfg(target_arch = "wasm32")]

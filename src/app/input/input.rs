@@ -4,6 +4,17 @@ use bevy::{
     window::CursorMoved,
 };
 
+pub struct InputPlugin;
+
+impl Plugin for InputPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_startup_system(setup)
+           .add_system(update_click)
+           .add_system(update_events);
+    }
+}
+
+
 pub fn setup(mut commands: Commands) {
 
 }

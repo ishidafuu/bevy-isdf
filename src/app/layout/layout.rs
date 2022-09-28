@@ -11,6 +11,14 @@ pub struct TimeUI;
 #[derive(Component)]
 pub struct ScoreBoard;
 
+pub struct AppLayoutPlugin;
+
+impl Plugin for AppLayoutPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_startup_system(setup);
+    }
+}
+
 pub fn setup(mut commands: Commands, assets: Res<AssetServer>) {
     let font_handle: Handle<Font> = assets.load("fonts/Picory.ttf");
     let text_style = TextStyle {

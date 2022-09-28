@@ -1,2 +1,1 @@
-pub mod layout_plugin;
-mod score_board;
+pub mod layout;

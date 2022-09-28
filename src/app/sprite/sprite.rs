@@ -1,5 +1,14 @@
 use bevy::{prelude::*, utils::HashMap};
 
+pub struct SpritePlugin;
+impl Plugin for SpritePlugin {
+    fn build(&self, app: &mut App) {
+        app.init_resource::<Sprite>()
+            .add_startup_system(setup_sprite)
+            .add_system(animate_sprite);
+    }
+}
+
 #[derive(Component, Deref, DerefMut)]
 pub struct AnimationTimer(Timer);
 
