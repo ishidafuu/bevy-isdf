@@ -11,7 +11,7 @@ pub fn run() {
 
     app.insert_resource(setup_window())
         .add_plugins(DefaultPlugins)
-        .add_plugin(camera::camera_plugin::CameraPlugin)
+        .add_plugin(camera::camera::CameraPlugin)
         // .add_plugin(state::state_plugin::SwitchStatePlugin)
         .add_plugin(layout::layout_plugin::AppLayoutPlugin)
         .add_plugin(sprite::sprite_plugin::SpritePlugin)
