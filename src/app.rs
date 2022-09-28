@@ -5,6 +5,8 @@ mod input;
 mod layout;
 mod sprite;
 mod state;
+mod interact;
+
 
 pub fn run() {
     let mut app = App::new();
@@ -15,6 +17,8 @@ pub fn run() {
         // .add_plugin(state::state_plugin::SwitchStatePlugin)
         .add_plugin(layout::layout::AppLayoutPlugin)
         .add_plugin(sprite::sprite::SpritePlugin)
+        .add_plugin(interact::interact::InteractionPlugin)
+        .add_plugin(interact::drag::DragPlugin)
         .add_plugin(input::input::InputPlugin);
 
     // // when building for Web, use WebGL2 rendering
