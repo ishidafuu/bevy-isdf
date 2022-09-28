@@ -4,13 +4,13 @@ use bevy::{prelude::*, utils::HashMap};
 pub struct AnimationTimer(Timer);
 
 #[derive(Default)]
-pub struct SpriteManager {
+pub struct Sprite {
     pub sprites: HashMap<String, Handle<Image>>,
     pub unit_atlas: HashMap<String, Handle<TextureAtlas>>,
     pub unit_atlas_image: HashMap<String, Handle<Image>>,
 }
 
-pub fn setup_sprite_manager(
+pub fn setup_sprite(
     mut commands: Commands,
     asset_server: Res<AssetServer>,
     mut texture_atlases: ResMut<Assets<TextureAtlas>>,

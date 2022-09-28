@@ -2,9 +2,9 @@ use bevy::{prelude::*};
 
 use super::camera;
 
-pub struct SetupCameraPlugin;
+pub struct CameraPlugin;
 
-impl Plugin for SetupCameraPlugin {
+impl Plugin for CameraPlugin {
     fn build(&self, app: &mut App) {
         app.add_startup_system(camera::setup_camera);
     }
